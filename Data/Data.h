@@ -1,4 +1,7 @@
-//Data.h
+// Data.h
+
+#ifndef DATA_H
+#define DATA_H
 
 #include <complex>
 #include <iostream>
@@ -62,3 +65,5 @@ class Data {
             }
         }
     };
+
+#endif

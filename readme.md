@@ -7,7 +7,7 @@
     学院：信息科学与工程学院        
     学生卡号：320220942311      
 
-开发平台：Windows11，QTcreator,vscode
+开发平台：Windows11，QTcreator,vscode       
 
 ##  具体内容
 开发流程    
