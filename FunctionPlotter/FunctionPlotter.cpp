@@ -24,5 +24,5 @@ void FunctionPlotter::generatePlot(double xMin, double xMax, int numPoints) {
 
     plt::save("function_plot.png");
 
-    system("D:/anaconda/envs/software/python plot_function.py");
+    system("python plot_function.py");
 }

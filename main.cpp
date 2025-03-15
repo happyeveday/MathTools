@@ -1,6 +1,7 @@
 // main.cpp
 
 #include <iostream>
+#include <fstream>  // 添加此行以包含 std::ifstream
 #include "calculator/calculator.h"
 #include "Data/Data.h"
 #include "FunctionPlotter/FunctionPlotter.h"
@@ -47,17 +48,37 @@ void runCalculator() {
 void runFunctionPlotter() {
     FunctionPlotter plotter;
     std::string userFunction;
-    
-    std::cout << "Enter a function (e.g., 3*x+7): ";
-    std::cin >> userFunction;
+    bool validInput = false;
 
-    plotter.setFunction(userFunction);
-    plotter.generatePlot(-10, 10, 100);
+    while (!validInput) {
+        std::cout << "Enter a function (e.g., 3*x+7): ";
+        std::cin >> userFunction;
 
-    std::cout << "Plot generated successfully. Check 'function_plot.png'." << std::endl;
+        
+            plotter.setFunction(userFunction);
+            plotter.generatePlot(-10, 10, 100);
+
+            // 检查生成的图像文件是否存在
+            std::ifstream plotFile("function_plot.png");
+            if (plotFile) {
+                validInput = true;
+                plotFile.close();
+                std::cout << "Plot generated successfully. Check 'function_plot.png'." << std::endl;
+            } else {
+                std::cerr << "生成失败！" << std::endl;
+            }
+        
+    }
 }
 
 int main() {
+
+      try {
+        std::cout << "Program started." << std::endl;
+        // 程序其他代码...
+    } catch (const std::exception& e) {
+        std::cerr << "Exception occurred: " << e.what() << std::endl;
+    }
     int choice;
     std::cout << "Select mode:\n";
     std::cout << "1. Calculator\n";
@@ -72,6 +93,5 @@ int main() {
     } else {
         std::cerr << "Invalid choice!" << std::endl;
     }
-
     return 0;
 }
